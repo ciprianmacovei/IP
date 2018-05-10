@@ -86,9 +86,9 @@ app.post('/login',(req,res) => {
 	console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
 	connection.query(`select * from users where email = '${user.email}' and pass = '${user.password}'`,function(err,rows,fields){
     if(!err){
-      console.log(rows.length);
+      console.log(rows[0].ID);
       if (rows.length!=0){
-        res.json({ok:true}); 
+        res.json({ok:true,userID:rows[0].ID}); 
         console.log('a mers'); 
       }
       if (rows.length == 0){
